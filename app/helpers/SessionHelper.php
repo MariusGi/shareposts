@@ -2,14 +2,14 @@
 
 declare(strict_types = 1);
 
+session_start();
+
 class SessionHelper
 {
     // EXAMPLE - SessionHelper::flash('register_success', 'You are now registered', 'alert alert-danger');
     // DISPLAY IN VIEW - echo SessionHelper::flash('register_success');
     public static function flash(string $name = '', string $message = '', string $bootstrapClass = 'alert alert-success')
     {
-        session_start();
-
         if (!empty($name)) {
             if (!empty($message) && empty($_SESSION[$name])) {
                 if (!empty($_SESSION[$name])) {
