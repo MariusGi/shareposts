@@ -11,6 +11,10 @@ class PagesController extends Controller
 
     public function index()
     {
+        if (SessionHelper::isLoggedIn()) {
+            UrlHelper::redirect('posts');
+        }
+
         $data = [
             'title' => 'SharePosts',
             'description' => 'Simple social network built on the TraversyMVC PHP Framework',

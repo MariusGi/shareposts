@@ -14,7 +14,7 @@ class UsersController extends Controller
     public function register()
     {
         // Check for POST request
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Process the form
 
@@ -109,7 +109,7 @@ class UsersController extends Controller
     public function login()
     {
         // Check for POST request
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Process the form
 
@@ -183,7 +183,7 @@ class UsersController extends Controller
         $_SESSION['user_id'] = $user->id;
         $_SESSION['user_email'] = $user->email;
         $_SESSION['user_name'] = $user->name;
-        UrlHelper::redirect('pages/index');
+        UrlHelper::redirect('posts');
     }
 
     public function logout()
@@ -193,14 +193,5 @@ class UsersController extends Controller
         unset($_SESSION['user_name']);
         session_destroy();
         UrlHelper::redirect('users/login');
-    }
-
-    public function isLoggedIn()
-    {
-        if (isset($_SESSION['user_id'])) {
-            return true;
-        }
-
-        return false;
     }
 }
